@@ -26,7 +26,6 @@
 //   mode: 'development', // Use 'production' for production builds
 // };
 
-
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -38,6 +37,7 @@ module.exports = {
     filename: "bundle.js",
   },
   mode: "development",
+  devtool: 'eval-source-map',
   devServer: {
     static: path.resolve(__dirname, "dist"),
     port: 8080,
@@ -55,17 +55,25 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.scss$/, // Match all .scss files
+        use: [
+          "style-loader", // Injects CSS into the DOM
+          "css-loader", // Resolves CSS imports
+          "sass-loader", // Compiles SCSS to CSS
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-        template: "./public/index.html"
-    })
-  ]
+      template: "./public/index.html",
+    }),
+  ],
 };
