@@ -6,10 +6,6 @@ export default function ProductCard({product}){
     const cartProduct = useSelector((state)=> state.cartItem.product);
     const dispatch = useDispatch();
 
-    useEffect(()=>{
-      console.log("cart item",cartProduct);
-    },[cartProduct])
-
     function handleAddClick(){
         setIsAdd(true);
         dispatch(setTotalCartItem());

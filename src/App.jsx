@@ -13,7 +13,6 @@ export default function App() {
 
   useEffect(async () => {
     const productList = await fetchProductList();
-    console.log("data", productList);
     dispatch(setProductList(productList));
   }, []);
 

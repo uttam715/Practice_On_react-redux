@@ -25,13 +25,8 @@ export function setCartOpen(isOpen) {
   };
 }
 
-export function setIncreamentCartItem() {
+export function setItemCount(){
     return {
-      type: "INCREAMENT",
-    };
-  }
-  export function setDecreamentCartItem() {
-    return {
-      type: "DECREAMENT",
-    };
-  }
+        type: "ITEMCOUNT"
+    }
+}

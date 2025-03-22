@@ -12,11 +12,8 @@ export default function CartItem(
     case "ISOPEN":
       return { ...state, isOpen: action.isOpen };
 
-    case "INCREAMENT":
-      return { ...state, itemCount: state.itemCount + 1 };
-
-    case "DECREAMENT":
-      return { ...state, itemCount: state.itemCount - 1 };
+      case "ITEMCOUNT": 
+      return {...state, itemCount: state.itemCount+1}
 
     default:
       return state;
